@@ -54,7 +54,7 @@ class AdminUser < ActiveRecord::Base
   end
   
   def self.authenticate(username="",password="")
-    u = UserAdmin.where(username => :username).first
+    u = AdminUser.where(:username => username).first
     if u && u.hashed_password == u.hash_with_salt(password, salt)
       return u
     else
