@@ -1,0 +1,7 @@
+<%= link_to('Roar', '#', :onclick => "jsRoar(); return true;") %>
+
+<%= javascript.tag("alert('Hello.);") %>
+
+<%= text = "User input with possible malicious code" %>
+
+<%= javascript.tag("alert('#{escape_javascript(text)});") #escape_javascript santizes the input %>

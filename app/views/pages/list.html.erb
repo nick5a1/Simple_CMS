@@ -1,0 +1,37 @@
+<% @page_title = "Pages List" %>
+
+<%= link_to("<<< Back to Subjects List", {:controller => 'subjects', :action => 'list'}, :class => 'action list') %>
+
+<div class="page list">
+	<h2>Pages</h2>
+	
+  <%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => 'action new') %>
+	
+	<div><%= pluralize(@pages.size, 'page') %></div>
+	<table class="listing" summary="Page list">
+		<tr class="header">
+			<th>&nbsp;</th>
+			<th>Page</th>
+			<th>Visible</th>
+			<th>Sections</th>
+			<th>Actions</th>
+		</tr>
+		<% @pages.each do |page| %>
+		<tr class="<%= cycle('odd', 'even') %>">
+			<td><%= page.position %></td>
+			<td><%= page.name %></td>
+			<td class="center"><%= status_tag(page.visible) %></td> <!-- ternary if statement. if the page is visible print yes, otherwise print no -->
+			<td class="center"><%= page.sections.size %></td>
+			<td class="actions">
+			  <%= link_to("View Sections", {:controller => 'sections', :action => 'list', :page_id => page.id}, :class => 'action show') %>
+				<%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'action show') %>
+				<%= link_to("Edit", {:action => 'edit', :id => page.id, :subject_id => @subject.id}, :class => 'action edit') %>
+				<%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'action delete') %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+				
+				
+		

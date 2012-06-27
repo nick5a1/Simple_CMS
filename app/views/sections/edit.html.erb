@@ -1,0 +1,17 @@
+<% @page_title = "Edit " + "'" + @section.name + "'" %>
+
+<%= link_to("<< Back to list", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="section edit">
+  <h2>Update Section</h2>
+  
+  <%= form_for(:section, :url => {:action => 'update', :id => @section.id, :page_id => @page.id}) do |f| %><!-- same as new view but action is update and we include the @section.id in params -->
+  
+<%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Section") %>
+    </div>
+
+  <% end %>
+</div>

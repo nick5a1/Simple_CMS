@@ -1,0 +1,17 @@
+<% @page_title = "Edit " + "'" + @admin_user.name + "'" %>
+
+<%= link_to("<< Back to list", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="admin_user edit">
+  <h2>Update Admin User</h2>
+  
+  <%= form_for(:admin_user, :url => {:action => 'update', :id => @admin_user.id}) do |f| %><!-- same as new view but action is update and we include the @admin_user.id in params -->
+  
+<%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Admin User") %>
+    </div>
+
+  <% end %>
+</div>
